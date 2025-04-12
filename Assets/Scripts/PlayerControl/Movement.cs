@@ -10,7 +10,10 @@ namespace PlayerControl
 
         private void FixedUpdate()
         {
-            transform.Translate(_input.MovingDirection * _speed * Time.fixedDeltaTime, Space.Self);
+            transform.position += _speed * Time.fixedDeltaTime * _input.MovingDirection;
+
+            if (_input.MovingDirection != Vector3.zero)
+                transform.forward = _input.MovingDirection;
         }
     }
 }
